@@ -1,5 +1,18 @@
 body {
-    width: 100vw;
+  background-color: #29292a;
+  min-height: 100vh;
+  margin: 0; /* убираем дефолтные отступы */
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    padding: 0 40px;
+    width: 100%;
+    max-width: 1200px;
     height: 100vh;
-    background-color: #29292a;
+    background-color: red;
+    gap: 20px;
 }
