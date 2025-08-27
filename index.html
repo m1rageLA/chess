@@ -1,19 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chess</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chess</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
-    <div class="container">
-        <div class="chessboard"></div>
-    </div>
+  <div class="container">
+    <header class="header">
+      <h1>Chess Game</h1>
+      <button id="restart-btn">Restart</button>
+    </header>
 
-    <script src="scripts.js"></script>
+    <main class="main">
+      <div class="chessboard"></div>
+
+      <aside class="sidebar">
+        <div class="turn-indicator">Turn: <span id="turn">White</span></div>
+        <div class="captured">
+          <h3>Captured Pieces</h3>
+          <div id="captured-white"></div>
+          <div id="captured-black"></div>
+        </div>
+        <div class="history">
+          <h3>Move History</h3>
+          <ul id="move-history"></ul>
+        </div>
+      </aside>
+    </main>
+  </div>
+
+  <script src="scripts.js"></script>
 </body>
-
 </html>

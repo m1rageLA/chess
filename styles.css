@@ -1,18 +1,66 @@
 body {
   background-color: #29292a;
   min-height: 100vh;
-  margin: 0; /* убираем дефолтные отступы */
+  margin: 0;
   display: flex;
   justify-content: center;
+  color: #fff;
+  font-family: sans-serif;
 }
 
 .container {
-    display: grid;
-    grid-template-columns: repeat(12, 1fr);
-    padding: 0 40px;
-    width: 100%;
-    max-width: 1200px;
-    height: 100vh;
-    background-color: red;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1200px;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 20px;
+  flex: 1;
+}
+
+.chessboard {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  aspect-ratio: 1 / 1;
+  background: #fff;
+  border: 4px solid #333;
+}
+
+.chessboard div {
+  width: 100%;
+  height: 100%;
+}
+
+.chessboard div:nth-child(even) {
+  background: #eee;
+}
+
+.chessboard div:nth-child(odd) {
+  background: #444;
+}
+
+.sidebar {
+  background: #1f1f1f;
+  padding: 15px;
+  border-radius: 8px;
+  overflow-y: auto;
+}
+
+.sidebar h3 {
+  margin-top: 0;
 }
