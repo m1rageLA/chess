@@ -3,6 +3,7 @@
   --panel:#1f1f1f;
   --light:#eee;
   --dark:#444;
+  --accent:#f5c542;
 }
 
 body {
@@ -12,7 +13,7 @@ body {
   display: flex;
   justify-content: center;
   color: #fff;
-  font-family: sans-serif;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
 }
 
 .container {
@@ -32,6 +33,17 @@ body {
   margin-bottom: 20px;
 }
 
+#restart-btn{
+  padding: 8px 14px;
+  border: none;
+  border-radius: 10px;
+  background: #fafafa;
+  color: #111;
+  font-weight: 600;
+  cursor: pointer;
+}
+#restart-btn:hover{ filter: brightness(.95); }
+
 .main {
   display: grid;
   grid-template-columns: 1fr 300px;
@@ -39,47 +51,111 @@ body {
   flex: 1;
 }
 
-/* Доска красится как шахматка фоном (8×8) */
+/* Доска — шахматка фоном, клетки прозрачные */
 .chessboard {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
   aspect-ratio: 1 / 1;
   border: 4px solid #333;
-
-  /* 2×2 тайл, который повторяется: даёт 8×8 клетки */
   background:
     conic-gradient(from 90deg,
       var(--light) 25%, var(--dark) 0 50%,
       var(--light) 0 75%, var(--dark) 0)
-    0 0 / calc(100%/4) calc(100%/4);
+    0 0 / 25% 25%;
 }
 
 .square {
-  /* клетки прозрачные — видно фон-доску */
   background: transparent;
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2.5rem;
+  font-size: 2.6rem;
   line-height: 1;
   user-select: none;
+  position: relative;             /* для меток и подсветок */
 }
 
-/* боковая панель */
-.sidebar {
-  background: var(--panel);
-  padding: 15px;
-  border-radius: 8px;
-  overflow-y: auto;
+/* ===== Координаты: файлы (a–h) и ранги (1–8) ===== */
+.square::after,
+.square::before{
+  position: absolute;
+  font-size: .8rem;
+  font-weight: 600;
+  color: #fff;
+  opacity: .85;
+  text-shadow: 0 1px 2px #0007;
+  pointer-events: none;
 }
 
-.sidebar h3 {
-  margin-top: 0;
-}
+/* буквы снизу (a–h) — нижний ряд */
+.square:nth-child(57)::after{ content:"a"; bottom:6px; right:8px; }
+.square:nth-child(58)::after{ content:"b"; bottom:6px; right:8px; }
+.square:nth-child(59)::after{ content:"c"; bottom:6px; right:8px; }
+.square:nth-child(60)::after{ content:"d"; bottom:6px; right:8px; }
+.square:nth-child(61)::after{ content:"e"; bottom:6px; right:8px; }
+.square:nth-child(62)::after{ content:"f"; bottom:6px; right:8px; }
+.square:nth-child(63)::after{ content:"g"; bottom:6px; right:8px; }
+.square:nth-child(64)::after{ content:"h"; bottom:6px; right:8px; }
 
-/* необязательная подсветка наведения по клетке */
-.square:hover {
+/* цифры слева (8–1) — первый столбец */
+.square:nth-child(1)::before{  content:"8"; top:6px;  left:8px; }
+.square:nth-child(9)::before{  content:"7"; top:6px;  left:8px; }
+.square:nth-child(17)::before{ content:"6"; top:6px;  left:8px; }
+.square:nth-child(25)::before{ content:"5"; top:6px;  left:8px; }
+.square:nth-child(33)::before{ content:"4"; top:6px;  left:8px; }
+.square:nth-child(41)::before{ content:"3"; top:6px;  left:8px; }
+.square:nth-child(49)::before{ content:"2"; top:6px;  left:8px; }
+.square:nth-child(57)::before{ content:"1"; top:6px;  left:8px; }
+
+/* ===== Состояния клеток (на будущее для логики) ===== */
+.square:hover{
   outline: 2px solid rgba(255,255,255,.25);
   outline-offset: -2px;
+}
+
+.square.is-selected{
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+}
+
+.square.is-legal::after{
+  content:"";
+  position:absolute;
+  width:28%;
+  height:28%;
+  border-radius:50%;
+  background: rgba(255,255,255,.35);
+  box-shadow: 0 0 0 2px rgba(0,0,0,.15) inset;
+  transform: translate(-50%, -50%);
+  top:50%;
+  left:50%;
+}
+
+.square.is-capture::after{
+  content:"";
+  position:absolute;
+  width:78%;
+  height:78%;
+  border-radius:12px;
+  border:3px solid rgba(255,80,80,.8);
+  top:50%; left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.square.is-lastmove{
+  box-shadow: inset 0 0 0 9999px rgba(245,197,66,.16);
+}
+
+.sidebar {
+  background: var(--panel);
+  padding: 16px;
+  border-radius: 10px;
+  overflow-y: auto;
+}
+.sidebar h3 { margin: 10px 0 8px; }
+
+/* Респонсив: сайдбар под доской */
+@media (max-width: 900px){
+  .main{ grid-template-columns: 1fr; }
 }
