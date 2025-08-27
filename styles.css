@@ -1,5 +1,12 @@
+:root{
+  --bg:#29292a;
+  --panel:#1f1f1f;
+  --light:#eee;
+  --dark:#444;
+}
+
 body {
-  background-color: #29292a;
+  background-color: var(--bg);
   min-height: 100vh;
   margin: 0;
   display: flex;
@@ -32,29 +39,36 @@ body {
   flex: 1;
 }
 
+/* Доска красится как шахматка фоном (8×8) */
 .chessboard {
   display: grid;
   grid-template-columns: repeat(8, 1fr);
   grid-template-rows: repeat(8, 1fr);
   aspect-ratio: 1 / 1;
   border: 4px solid #333;
+
+  /* 2×2 тайл, который повторяется: даёт 8×8 клетки */
+  background:
+    conic-gradient(from 90deg,
+      var(--light) 25%, var(--dark) 0 50%,
+      var(--light) 0 75%, var(--dark) 0)
+    0 0 / calc(100%/4) calc(100%/4);
 }
 
 .square {
-  width: 100%;
-  height: 100%;
+  /* клетки прозрачные — видно фон-доску */
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  line-height: 1;
+  user-select: none;
 }
 
-.square:nth-child(odd) {
-  background: #eee;
-}
-
-.square:nth-child(even) {
-  background: #444;
-}
-
+/* боковая панель */
 .sidebar {
-  background: #1f1f1f;
+  background: var(--panel);
   padding: 15px;
   border-radius: 8px;
   overflow-y: auto;
@@ -62,4 +76,10 @@ body {
 
 .sidebar h3 {
   margin-top: 0;
+}
+
+/* необязательная подсветка наведения по клетке */
+.square:hover {
+  outline: 2px solid rgba(255,255,255,.25);
+  outline-offset: -2px;
 }
