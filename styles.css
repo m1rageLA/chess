@@ -91,3 +91,8 @@ body {
 /* piece color contrast */
 .piece-white { color: #fff; text-shadow: 0 0 2px rgba(0,0,0,.6); }
 .piece-black { color: #111; text-shadow: 0 0 2px rgba(255,255,255,.7); }
+
+.highlight {
+  outline: 3px solid var(--accent);
+  outline-offset: -3px;
+}
