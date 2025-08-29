@@ -63,7 +63,14 @@ body {
 .square {
   width: 100%;
   height: 100%;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
 }
+
 
 .white {
   background-color: #fff;
@@ -80,3 +87,4 @@ body {
   padding: 10px;
   border-radius: 10px;
 }
+
