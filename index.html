@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chess</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chess Game</title>
+  <link rel="stylesheet" href="styles.css"/>
 </head>
 <body>
   <div class="container">
@@ -14,98 +14,13 @@
     </header>
 
     <main class="main">
-      <div class="chessboard">
-        <!-- row 8 (black major pieces) -->
-        <div class="square">&#9820;</div>
-        <div class="square">&#9822;</div>
-        <div class="square">&#9821;</div>
-        <div class="square">&#9819;</div>
-        <div class="square">&#9818;</div>
-        <div class="square">&#9821;</div>
-        <div class="square">&#9822;</div>
-        <div class="square">&#9820;</div>
-
-        <!-- row 7 (black pawns) -->
-        <div class="square">&#9823;</div>
-        <div class="square">&#9823;</div>
-        <div class="square">&#9823;</div>
-        <div class="square">&#9823;</div>
-        <div class="square">&#9823;</div>
-        <div class="square">&#9823;</div>
-        <div class="square">&#9823;</div>
-        <div class="square">&#9823;</div>
-
-        <!-- rows 6–3 (empty) -->
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-        <div class="square"></div>
-
-        <!-- row 2 (white pawns) -->
-        <div class="square">&#9817;</div>
-        <div class="square">&#9817;</div>
-        <div class="square">&#9817;</div>
-        <div class="square">&#9817;</div>
-        <div class="square">&#9817;</div>
-        <div class="square">&#9817;</div>
-        <div class="square">&#9817;</div>
-        <div class="square">&#9817;</div>
-
-        <!-- row 1 (white major pieces) -->
-        <div class="square">&#9814;</div>
-        <div class="square">&#9816;</div>
-        <div class="square">&#9815;</div>
-        <div class="square">&#9813;</div>
-        <div class="square">&#9812;</div>
-        <div class="square">&#9815;</div>
-        <div class="square">&#9816;</div>
-        <div class="square">&#9814;</div>
-      </div>
-
+      <div class="chessboard"></div>
       <aside class="sidebar">
-        <div class="turn-indicator">Turn: <span id="turn">White</span></div>
-        <div class="captured">
-          <h3>Captured Pieces</h3>
-          <div id="captured-white"></div>
-          <div id="captured-black"></div>
-        </div>
-        <div class="history">
-          <h3>Move History</h3>
-          <ul id="move-history"></ul>
-        </div>
+        <h2>Move History</h2>
+        <ul id="move-history"></ul>
       </aside>
     </main>
   </div>
+  <script src="scripts.js"></script>
 </body>
 </html>
