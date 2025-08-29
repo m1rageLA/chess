@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Chess Game</title>
-  <link rel="stylesheet" href="styles.css"/>
+  <link rel="stylesheet" href="styles.css" />
 </head>
+
 <body>
   <div class="container">
     <header class="header">
@@ -16,11 +18,20 @@
     <main class="main">
       <div class="chessboard"></div>
       <aside class="sidebar">
+
         <h2>Move History</h2>
         <ul id="move-history"></ul>
+        <h2>Turn</h2>
+        <div id="turn-indicator">White to move</div>
+        <h2>Captured</h2>
+        <div class="captured">
+          <div><strong>White:</strong> <span id="cap-white"></span></div>
+          <div><strong>Black:</strong> <span id="cap-black"></span></div>
+        </div>
       </aside>
     </main>
   </div>
   <script src="scripts.js"></script>
 </body>
+
 </html>
